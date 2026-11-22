@@ -53,7 +53,13 @@ fn lift(insn: &Insn, addr: u64, il: &Il, data: &[u8]) -> Lift {
 }
 
 /// The `getInstructionLowLevelIL` callback body.
+///
+/// When the reference lifter raises, the exception escapes Binary Ninja's
+/// ctypes callback wrapper (it only catches `OSError`). The core then sees a
+/// successful lift with the length it passed in (`len(data)`) and keeps the IL
+/// appended before the raise. Every such encoding in the reference dumps
+/// shows exactly that, so a `Raise` maps to `Some(data.len())`.
 pub fn instruction_llil(data: &[u8], addr: u64, il: &Il) -> Option<usize> {
     let insn = decoded(data)?;
-    lift(&insn, addr, il, data).ok()
+    Some(lift(&insn, addr, il, data).unwrap_or(data.len()))
 }

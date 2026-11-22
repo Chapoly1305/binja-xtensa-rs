@@ -42,8 +42,9 @@ Temporary registers: `crate::il::temp(n)` is `LLIL_TEMP(n)`.
 
 ## Exceptions
 
-A Python exception escaping a lift function makes the core callback fail
-(`getInstructionLowLevelIL` returns false) and keeps the IL appended so far.
+A Python exception escaping a lift function is not caught by Binary Ninja's
+callback wrapper (it only catches `OSError`): the core sees a successful lift
+of `len(data)` bytes and keeps the IL appended so far.
 Model it with `Err(Raise::..)` at the same point, after the same appends. Use
 `?` on every lookup that can raise in Python. `assert` failures, `KeyError`,
 `TypeError` from `None` arithmetic: all are `Err(Raise::Other("<site>"))`.

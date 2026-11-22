@@ -46,6 +46,7 @@ pub struct Il {
     /// Labels created during this lift. Boxed so their addresses are stable;
     /// they live as long as the builder, like the Python objects did for the
     /// duration of the lift callback.
+    #[allow(clippy::vec_box)]
     labels: RefCell<Vec<Box<BNLowLevelILLabel>>>,
 }
 
