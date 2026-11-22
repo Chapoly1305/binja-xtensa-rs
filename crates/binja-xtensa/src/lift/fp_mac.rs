@@ -321,15 +321,8 @@ fn lift_movltz_s(insn: &Insn, _addr: u64, il: &Il, _data: &[u8]) -> Lift {
     mov_cond_s(insn, il, Il::compare_signed_less_than)
 }
 
-/// `_lift_MOVFT(insn, addr, il, bit, float)` (defined in the Boolean Option
-/// section of `lifter.py`; the float lambdas live here). Ported locally so
-/// this module does not depend on another module's private helper.
-fn movft(insn: &Insn, il: &Il, bit: i64, float: bool) -> Lift {
-    let t = il.reg(1, rn(insn, "bt")?);
-    let b = il.const_(1, bit);
-    let cond = il.compare_equal(1, t, b);
-    lift_cmov(cond, insn, il, float)
-}
+/// MOVF.S/MOVT.S use `_lift_MOVFT` from the Boolean Option section.
+use super::core::lift_movft as movft;
 
 fn lift_movf_s(insn: &Insn, _addr: u64, il: &Il, _data: &[u8]) -> Lift {
     movft(insn, il, 0, true)
