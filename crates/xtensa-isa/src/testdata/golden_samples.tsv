@@ -1,0 +1,60 @@
+000000	3	V	ILL	CALLX	op0=0,op1=0,op2=0,r=0,s=0,n=0,m=0		insn:ILL:0:0|text:     :0:0	insn:ILL:0:0|text:     :0:0
+00006c	2	V	MOVI.N	RI7	op0=12,s=0,t=6,i=0,imm7=96	inline0=-32/-32	insn:MOVI.N:0:0|text:  :0:0|reg:a0:0:0|sep:, :0:0|int:-32:-32:4	insn:MOVI.N:0:0|text:  :0:0|reg:a0:0:0|sep:, :0:0|int:-32:-32:4
+000080	3	V	RET	CALLX	op0=0,op1=0,op2=0,r=0,s=0,n=0,m=2		insn:RET:0:0|text:     :0:0	insn:RET:0:0|text:     :0:0
+000090	3	V	RETW	CALLX	op0=0,op1=0,op2=0,r=0,s=0,n=1,m=2		insn:RETW:0:0|text:    :0:0	insn:RETW:0:0|text:    :0:0
+0000	EXC IndexError
+0005e0	3	V	CALLX8	CALLX	op0=0,op1=0,op2=0,r=0,s=5,n=2,m=3		insn:CALLX8:0:0|text:  :0:0|reg:a5:0:0	insn:CALLX8:0:0|text:  :0:0|reg:a5:0:0
+00120b	2	V	ADDI.N	RRRN	op0=11,r=1,s=2,t=0	inline0=-1/-1	insn:ADDI.N:0:0|text:  :0:0|reg:a1:0:0|sep:, :0:0|reg:a2:0:0|sep:, :0:0|int:-1:-1:4	insn:ADDI.N:0:0|text:  :0:0|reg:a1:0:0|sep:, :0:0|reg:a2:0:0|sep:, :0:0|int:-1:-1:4
+0020f0	3	V	NOP	RRR	op0=0,op1=0,op2=0,r=2,s=0,t=15		insn:NOP:0:0|text:     :0:0	insn:NOP:0:0|text:     :0:0
+003210	3	V	RFI	RRR	op0=0,op1=0,op2=0,r=3,s=2,t=1		insn:RFI:0:0|text:     :0:0|int:2:2:1	insn:RFI:0:0|text:     :0:0|int:2:2:1
+004120	3	V	BREAK	RRR	op0=0,op1=0,op2=0,r=4,s=1,t=2		insn:BREAK:0:0|text:   :0:0|int:1:1:1|sep:, :0:0|int:2:2:1	insn:BREAK:0:0|text:   :0:0|int:1:1:1|sep:, :0:0|int:2:2:1
+00	EXC IndexError
+013450	3	V	SLLI	RRR	op0=0,op1=1,op2=0,r=3,s=4,t=5	inline0=27/27	insn:SLLI:0:0|text:    :0:0|reg:a3:0:0|sep:, :0:0|reg:a4:0:0|sep:, :0:0|int:27:27:1	insn:SLLI:0:0|text:    :0:0|reg:a3:0:0|sep:, :0:0|reg:a4:0:0|sep:, :0:0|int:27:27:1
+060000	3	I	ILL	-	op0=0,op1=6		insn:ILL:0:0|text:     :0:0	insn:ILL:0:0|text:     :0:0
+091544	3	V	MULA.DD.HL.LDINC	RRR	op0=4,op1=9,op2=0,r=1,s=5,t=4		insn:MULA.DD.HL.LDINC:0:0|text: :0:0|reg:m1:0:0|sep:, :0:0|reg:a5:0:0|sep:, :0:0|reg:m0:0:0|sep:, :0:0|reg:m3:0:0	insn:MULA.DD.HL.LDINC:0:0|text: :0:0|reg:m1:0:0|sep:, :0:0|reg:a5:0:0|sep:, :0:0|reg:m0:0:0|sep:, :0:0|reg:m3:0:0
+093420	3	V	L32E	RRI4	op0=0,op1=9,op2=0,r=3,s=4,t=2,imm4=0	inline0=-52/-52	insn:L32E:0:0|text:    :0:0|reg:a2:0:0|sep:, :0:0|reg:a4:0:0|sep:, :0:0|int:-52:-52:1	insn:L32E:0:0|text:    :0:0|reg:a2:0:0|sep:, :0:0|reg:a4:0:0|sep:, :0:0|int:-52:-52:1
+0d00	2	V	MOV.N	RRRN	op0=13,r=0,s=0,t=0		insn:MOV.N:0:0|text:   :0:0|reg:a0:0:0|sep:, :0:0|reg:a0:0:0	insn:MOV.N:0:0|text:   :0:0|reg:a0:0:0|sep:, :0:0|reg:a0:0:0
+0e12	3	I	ILL	-	op0=14		insn:ILL:0:0|text:     :0:0	insn:ILL:0:0|text:     :0:0
+0e	3	I	ILL	-	op0=14		insn:ILL:0:0|text:     :0:0	insn:ILL:0:0|text:     :0:0
+1d05	2	V	MOV.N	RRRN	op0=13,r=0,s=5,t=1		insn:MOV.N:0:0|text:   :0:0|reg:a1:0:0|sep:, :0:0|reg:a5:0:0	insn:MOV.N:0:0|text:   :0:0|reg:a1:0:0|sep:, :0:0|reg:a5:0:0
+1d	EXC IndexError
+213450	3	V	SRAI	RRR	op0=0,op1=1,op2=2,r=3,s=4,t=5	inline0=4/4	insn:SRAI:0:0|text:    :0:0|reg:a3:0:0|sep:, :0:0|reg:a5:0:0|sep:, :0:0|int:4:4:1	insn:SRAI:0:0|text:    :0:0|reg:a3:0:0|sep:, :0:0|reg:a5:0:0|sep:, :0:0|int:4:4:1
+233450	3	V	SEXT	RRR	op0=0,op1=3,op2=2,r=3,s=4,t=5	inline0=12/12	insn:SEXT:0:0|text:    :0:0|reg:a3:0:0|sep:, :0:0|reg:a4:0:0|sep:, :0:0|int:12:12:1	insn:SEXT:0:0|text:    :0:0|reg:a3:0:0|sep:, :0:0|reg:a4:0:0|sep:, :0:0|int:12:12:1
+2c	EXC IndexError
+307582	3	V	DPFL	RRI4	op0=2,op1=0,r=7,s=5,t=8,imm4=3		insn:DPFL:0:0|text:    :0:0|reg:a5:0:0|sep:, :0:0|int:3:3:1	insn:DPFL:0:0|text:    :0:0|reg:a5:0:0|sep:, :0:0|int:3:3:1
+333450	3	V	CLAMPS	RRR	op0=0,op1=3,op2=3,r=3,s=4,t=5		insn:CLAMPS:0:0|text:  :0:0|reg:a3:0:0|sep:, :0:0|reg:a4:0:0|sep:, :0:0|int:12:12:1	insn:CLAMPS:0:0|text:  :0:0|reg:a3:0:0|sep:, :0:0|reg:a4:0:0|sep:, :0:0|int:12:12:1
+3cf0	2	V	MOVI.N	RI7	op0=12,s=0,t=3,i=0,imm7=63	inline0=63/63	insn:MOVI.N:0:0|text:  :0:0|reg:a0:0:0|sep:, :0:0|int:63:63:4	insn:MOVI.N:0:0|text:  :0:0|reg:a0:0:0|sep:, :0:0|int:63:63:4
+3f0244	3	V	MULS.AD.HH	RRR	op0=4,op1=15,op2=3,r=0,s=2,t=4		insn:MULS.AD.HH:0:0|text: :0:0|reg:a2:0:0|sep:, :0:0|reg:m3:0:0	insn:MULS.AD.HH:0:0|text: :0:0|reg:a2:0:0|sep:, :0:0|reg:m3:0:0
+404510	3	V	SSAI	RRR	op0=0,op1=0,op2=4,r=4,s=5,t=1	inline0=21/21	insn:SSAI:0:0|text:    :0:0|int:21:21:1	insn:SSAI:0:0|text:    :0:0|int:21:21:1
+4080f0	3	V	ROTW	RRR	op0=0,op1=0,op2=4,r=8,s=0,t=15		insn:ROTW:0:0|text:    :0:0|int:-1:-1:1	insn:ROTW:0:0|text:    :0:0|int:-1:-1:1
+493420	3	V	S32E	RRI4	op0=0,op1=9,op2=4,r=3,s=4,t=2,imm4=4	inline0=-52/-52	insn:S32E:0:0|text:    :0:0|reg:a2:0:0|sep:, :0:0|reg:a4:0:0|sep:, :0:0|int:-52:-52:1	insn:S32E:0:0|text:    :0:0|reg:a2:0:0|sep:, :0:0|reg:a4:0:0|sep:, :0:0|int:-52:-52:1
+5b00f9	2	V	S32I.N	RRRN	op0=9,r=0,s=0,t=15	inline0=0/0	insn:S32I.N:0:0|text:  :0:0|reg:a15:0:0|sep:, :0:0|reg:a0:0:0|sep:, :0:0|int:0:0:4	insn:S32I.N:0:0|text:  :0:0|reg:a15:0:0|sep:, :0:0|reg:a0:0:0|sep:, :0:0|int:0:0:4
+5b0193	3	V	LSI	RRI8	op0=3,r=0,s=1,t=9,imm8=91	inline0=364/364	insn:LSI:0:0|text:     :0:0|reg:f9:0:0|sep:, :0:0|reg:a1:0:0|sep:, :0:0|int:364:364:4	insn:LSI:0:0|text:     :0:0|reg:f9:0:0|sep:, :0:0|reg:a1:0:0|sep:, :0:0|int:364:364:4
+5b0260	3	V	ULT.S	RRR	op0=0,op1=11,op2=5,r=0,s=2,t=6		insn:ULT.S:0:0|text:   :0:0|reg:b0:0:0|sep:, :0:0|reg:f2:0:0|sep:, :0:0|reg:f6:0:0	insn:ULT.S:0:0|text:   :0:0|reg:b0:0:0|sep:, :0:0|reg:f2:0:0|sep:, :0:0|reg:f6:0:0
+5b03c6	3	V	J	CALL	op0=6,n=0,offset=93199		insn:J:0:0|text:       :0:0|addr:40096c13:1074359315:4	insn:J:0:0|text:       :0:0|addr:400e7e46:1074691654:4
+5b04c1	3	V	L32R	RI16	op0=1,t=12,imm16=23300		insn:L32R:0:0|text:    :0:0|reg:a12:0:0|sep:, :0:0|addr:40056c10:1074097168:4	insn:L32R:0:0|text:    :0:0|reg:a12:0:0|sep:, :0:0|addr:400a7e44:1074429508:4
+5b094c	2	V	MOVI.N	RI7	op0=12,s=9,t=4,i=0,imm7=64	inline0=64/64	insn:MOVI.N:0:0|text:  :0:0|reg:a9:0:0|sep:, :0:0|int:64:64:4	insn:MOVI.N:0:0|text:  :0:0|reg:a9:0:0|sep:, :0:0|int:64:64:4
+5b09cc	2	V	BNEZ.N	RI6	op0=12,s=9,t=12,i=1,z=1,imm6=0		insn:BNEZ.N:0:0|text:  :0:0|reg:a9:0:0|sep:, :0:0|addr:40080004:1074266116:4	insn:BNEZ.N:0:0|text:  :0:0|reg:a9:0:0|sep:, :0:0|addr:400d1237:1074598455:4
+5b0af6	3	V	BGEUI	BRI8	op0=6,r=0,s=10,n=3,m=3,imm8=91		insn:BGEUI:0:0|text:   :0:0|reg:a10:0:0|sep:, :0:0|int:32768:32768:4|sep:, :0:0|addr:4008005f:1074266207:4	insn:BGEUI:0:0|text:   :0:0|reg:a10:0:0|sep:, :0:0|int:32768:32768:4|sep:, :0:0|addr:400d1292:1074598546:4
+5b0f36	3	V	ENTRY	BRI12	op0=6,s=15,n=3,m=0,imm12=1456	inline0=11648/11648	insn:ENTRY:0:0|text:   :0:0|reg:a15:0:0|sep:, :0:0|int:11648:11648:4	insn:ENTRY:0:0|text:   :0:0|reg:a15:0:0|sep:, :0:0|int:11648:11648:4
+61e650	3	V	XSR	RSR	op0=0,op1=1,op2=6,sr=230,t=5		insn:XSR.PS:0:0|text:  :0:0|reg:a5:0:0	insn:XSR.PS:0:0|text:  :0:0|reg:a5:0:0
+700324	3	V	UMUL.AA.LL	RRR	op0=4,op1=0,op2=7,r=0,s=3,t=2		insn:UMUL.AA.LL:0:0|text: :0:0|reg:a3:0:0|sep:, :0:0|reg:a2:0:0	insn:UMUL.AA.LL:0:0|text: :0:0|reg:a3:0:0|sep:, :0:0|reg:a2:0:0
+800001	3	V	L32R	RI16	op0=1,t=0,imm16=32768		insn:L32R:0:0|text:    :0:0|reg:a0:0:0|sep:, :0:0|addr:40060000:1074135040:4	insn:L32R:0:0|text:    :0:0|reg:a0:0:0|sep:, :0:0|addr:400b1234:1074467380:4
+800005	3	V	CALL0	CALL	op0=5,n=0,offset=131072		insn:CALL0:0:0|text:   :0:0|addr:40000004:1073741828:4	insn:CALL0:0:0|text:   :0:0|addr:40051234:1074074164:4
+802304	3	V	LDINC	RRR	op0=4,op1=0,op2=8,r=2,s=3,t=0		insn:LDINC:0:0|text:   :0:0|reg:m2:0:0|sep:, :0:0|reg:a3:0:0	insn:LDINC:0:0|text:   :0:0|reg:m2:0:0|sep:, :0:0|reg:a3:0:0
+80d002	3	V	ADDMI	RRI8	op0=2,r=13,s=0,t=0,imm8=128		insn:ADDMI:0:0|text:   :0:0|reg:a0:0:0|sep:, :0:0|reg:a0:0:0|sep:, :0:0|int:-32768:-32768:4	insn:ADDMI:0:0|text:   :0:0|reg:a0:0:0|sep:, :0:0|reg:a0:0:0|sep:, :0:0|int:-32768:-32768:4
+9c001e	3	I	ILL	-	op0=14		insn:ILL:0:0|text:     :0:0	insn:ILL:0:0|text:     :0:0
+9c004b	2	V	ADDI.N	RRRN	op0=11,r=0,s=0,t=4	inline0=4/4	insn:ADDI.N:0:0|text:  :0:0|reg:a0:0:0|sep:, :0:0|reg:a0:0:0|sep:, :0:0|int:4:4:4	insn:ADDI.N:0:0|text:  :0:0|reg:a0:0:0|sep:, :0:0|reg:a0:0:0|sep:, :0:0|int:4:4:4
+9c004c	2	V	MOVI.N	RI7	op0=12,s=0,t=4,i=0,imm7=64	inline0=64/64	insn:MOVI.N:0:0|text:  :0:0|reg:a0:0:0|sep:, :0:0|int:64:64:4	insn:MOVI.N:0:0|text:  :0:0|reg:a0:0:0|sep:, :0:0|int:64:64:4
+9c018c	2	V	BEQZ.N	RI6	op0=12,s=1,t=8,i=1,z=0,imm6=0		insn:BEQZ.N:0:0|text:  :0:0|reg:a1:0:0|sep:, :0:0|addr:40080004:1074266116:4	insn:BEQZ.N:0:0|text:  :0:0|reg:a1:0:0|sep:, :0:0|addr:400d1237:1074598455:4
+9c0426	3	V	BEQI	BRI8	op0=6,r=0,s=4,n=2,m=0,imm8=156		insn:BEQI:0:0|text:    :0:0|reg:a4:0:0|sep:, :0:0|int:-1:-1:4|sep:, :0:0|addr:4007ffa0:1074266016:4	insn:BEQI:0:0|text:    :0:0|reg:a4:0:0|sep:, :0:0|int:-1:-1:4|sep:, :0:0|addr:400d11d3:1074598355:4
+9c0436	3	V	ENTRY	BRI12	op0=6,s=4,n=3,m=0,imm12=2496	inline0=19968/19968	insn:ENTRY:0:0|text:   :0:0|reg:a4:0:0|sep:, :0:0|int:19968:19968:4	insn:ENTRY:0:0|text:   :0:0|reg:a4:0:0|sep:, :0:0|int:19968:19968:4
+9c0456	3	V	BNEZ	BRI12	op0=6,s=4,n=1,m=1,imm12=2496		insn:BNEZ:0:0|text:    :0:0|reg:a4:0:0|sep:, :0:0|addr:4007f9c4:1074264516:4	insn:BNEZ:0:0|text:    :0:0|reg:a4:0:0|sep:, :0:0|addr:400d0bf7:1074596855:4
+9c0476	3	V	BF	BRI8	op0=6,r=0,s=4,n=3,m=1,imm8=156		insn:BF:0:0|text:      :0:0|reg:b4:0:0|sep:, :0:0|addr:4007ffa0:1074266016:4	insn:BF:0:0|text:      :0:0|reg:b4:0:0|sep:, :0:0|addr:400d11d3:1074598355:4
+9c04f6	3	V	BGEUI	BRI8	op0=6,r=0,s=4,n=3,m=3,imm8=156		insn:BGEUI:0:0|text:   :0:0|reg:a4:0:0|sep:, :0:0|int:32768:32768:4|sep:, :0:0|addr:4007ffa0:1074266016:4	insn:BGEUI:0:0|text:   :0:0|reg:a4:0:0|sep:, :0:0|int:32768:32768:4|sep:, :0:0|addr:400d11d3:1074598355:4
+9cc042	3	V	ADDI	RRI8	op0=2,r=12,s=0,t=4,imm8=156		insn:ADDI:0:0|text:    :0:0|reg:a4:0:0|sep:, :0:0|reg:a0:0:0|sep:, :0:0|int:-100:-100:1	insn:ADDI:0:0|text:    :0:0|reg:a4:0:0|sep:, :0:0|reg:a0:0:0|sep:, :0:0|int:-100:-100:1
+9ce047	3	V	BBSI	RRI8	op0=7,r=14,s=0,t=4,imm8=156	inline0=4/4	insn:BBSI:0:0|text:    :0:0|reg:a0:0:0|sep:, :0:0|int:4:4:1|sep:, :0:0|addr:4007ffa0:1074266016:4	insn:BBSI:0:0|text:    :0:0|reg:a0:0:0|sep:, :0:0|int:4:4:1|sep:, :0:0|addr:400d11d3:1074598355:4
+9cf40d	2	V	RET.N	RRRN	op0=13,r=15,s=4,t=0		insn:RET.N:0:0|text:   :0:0	insn:RET.N:0:0|text:   :0:0
+c00006	3	V	J	CALL	op0=6,n=0,offset=196608		insn:J:0:0|text:       :0:0|addr:40070004:1074200580:4	insn:J:0:0|text:       :0:0|addr:400c1237:1074532919:4
+e3e730	3	V	RUR	RSR	op0=0,op1=3,op2=14,sr=231,t=3		insn:RUR.THREADPTR:0:0|text: :0:0|reg:a3:0:0	insn:RUR.THREADPTR:0:0|text: :0:0|reg:a3:0:0
+fd0f	2	V	MOV.N	RRRN	op0=13,r=0,s=15,t=15		insn:MOV.N:0:0|text:   :0:0|reg:a15:0:0|sep:, :0:0|reg:a15:0:0	insn:MOV.N:0:0|text:   :0:0|reg:a15:0:0|sep:, :0:0|reg:a15:0:0

@@ -1,0 +1,25 @@
+[workspace]
+resolver = "2"
+members = ["crates/xtensa-isa", "crates/binja-xtensa"]
+
+[workspace.package]
+edition = "2021"
+license = "MIT"
+repository = "https://github.com/Chapoly1305/binja-xtensa-rs"
+rust-version = "1.85"
+
+[workspace.dependencies]
+xtensa-isa = { path = "crates/xtensa-isa" }
+# Pinned to the API commit that matches Binary Ninja 6.0.10905 (api_REVISION.txt).
+binaryninja = { git = "https://github.com/Vector35/binaryninja-api", rev = "775c3b5eed8598217b20e1087afe7aa092a9b4b1" }
+binaryninjacore-sys = { git = "https://github.com/Vector35/binaryninja-api", rev = "775c3b5eed8598217b20e1087afe7aa092a9b4b1" }
+
+[profile.release]
+lto = "fat"
+codegen-units = 1
+debug = "line-tables-only"
+
+[profile.golden]
+inherits = "release"
+lto = "thin"
+codegen-units = 16

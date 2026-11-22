@@ -1,0 +1,17 @@
+[package]
+name = "binja-xtensa"
+version = "0.1.0"
+description = "Native Xtensa architecture plugin for Binary Ninja"
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+publish = false
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+xtensa-isa.workspace = true
+binaryninja.workspace = true
+binaryninjacore-sys.workspace = true
