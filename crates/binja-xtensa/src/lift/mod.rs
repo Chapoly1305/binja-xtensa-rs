@@ -39,7 +39,7 @@ pub enum Raise {
 pub type Lift = Result<usize, Raise>;
 
 /// What the reference `lift()` dispatcher does.
-fn lift(insn: &Insn, addr: u64, il: &Il, data: &[u8]) -> Lift {
+pub(crate) fn lift(insn: &Insn, addr: u64, il: &Il, data: &[u8]) -> Lift {
     let Some(handler) = common::handler_for(insn) else {
         il.append(il.unimplemented());
         return Ok(insn.len as usize);

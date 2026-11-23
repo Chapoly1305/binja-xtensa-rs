@@ -31,7 +31,7 @@ native RISC-V architecture analysed an ESP32-C6 application of similar size
 | Architecture model: registers, register stack, intrinsics, calling convention | done | model dump identical to the reference |
 | Instruction info and text callbacks | done | identical on every encoding checked so far |
 | LLIL lifter | in progress | exhaustive per-encoding differential test |
-| Function workflows (hardware loops, window tails, vector binding) | planned | whole-binary differential test |
+| Function workflows (hardware loops, window tails, vector binding) | done; 8 of 10,474 functions on one ESP32 image under investigation | whole-binary differential test (`fn_dump.py`/`fn_compare.py`) |
 | ESP firmware image loader | planned | |
 
 ## Layout
@@ -74,6 +74,16 @@ cmp /tmp/golden/SHA256SUMS /tmp/golden-rs/SHA256SUMS
 XTENSA_RS_ARCH_NAME=xtensa_rs bnpython3 harness/il_dump.py --arch xtensa_rs --out /tmp/rs
 bnpython3 harness/il_dump.py --arch xtensa --out /tmp/ref
 python3 harness/compare.py /tmp/ref /tmp/rs
+```
+
+The function workflows are compared on whole binaries. Load each plugin
+alone (both registered as `xtensa`, in separate Binary Ninja user
+directories), dump every function's blocks, lifted IL and LLIL, and diff:
+
+```bash
+BN_USER_DIRECTORY=/path/ref-user bnpython3 harness/fn_dump.py app.elf /tmp/ref.dump.gz --options @opts.json --trees
+BN_USER_DIRECTORY=/path/rs-user  bnpython3 harness/fn_dump.py app.elf /tmp/rs.dump.gz  --options @opts.json --trees
+python3 harness/fn_compare.py /tmp/ref.dump.gz /tmp/rs.dump.gz
 ```
 
 See `PORTING.md` for the porting rules.

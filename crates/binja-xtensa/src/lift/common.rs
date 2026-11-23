@@ -55,10 +55,13 @@ pub fn target(insn: &Insn, addr: u64) -> Result<i64, Raise> {
     insn.target_offset(addr as u32).ok_or(Raise::Other("target_offset returned None"))
 }
 
-/// `_lift_cond(cond, insn, addr, il)` on the per-instruction path (no
-/// conditional handler installed; the loop workflow installs one and is
-/// ported separately).
+/// `_lift_cond(cond, insn, addr, il)`. The loop workflow installs a
+/// conditional handler on the IL it re-lifts into (`Il::set_conditional_handler`);
+/// as in the reference it takes over before the target is computed.
 pub fn lift_cond(cond: u64, insn: &Insn, addr: u64, il: &Il) -> Lift {
+    if let Some(handler) = il.conditional_handler() {
+        return handler(cond, insn, addr, il);
+    }
     let tgt = target(insn, addr)?;
     let next = addr as i64 + insn.len as i64;
     let mut true_label = il.get_label_for_address(tgt as u64);

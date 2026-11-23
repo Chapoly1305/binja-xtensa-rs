@@ -14,6 +14,7 @@
 
 use std::cell::RefCell;
 use std::ptr;
+use std::rc::Rc;
 
 use binaryninjacore_sys::*;
 use BNLowLevelILOperation::*;
@@ -40,6 +41,19 @@ pub const fn temp(n: u32) -> R {
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct Label(*mut BNLowLevelILLabel);
 
+/// The `il._xtensa_conditional_handler(cond, insn, addr, il)` hook that the
+/// reference loop workflow installs on the IL it re-lifts into; `_lift_cond`
+/// defers to it when present. Never set on the per-instruction lift path.
+pub type CondHandler = Rc<dyn Fn(E, &xtensa_isa::Insn, u64, &Il) -> crate::lift::Lift>;
+
+/// An `ILSourceLocation`: the address and source operand an expression is
+/// built with by the `...WithLocation` core calls.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct Loc {
+    pub address: u64,
+    pub source_operand: u32,
+}
+
 pub struct Il {
     raw: *mut BNLowLevelILFunction,
     arch: *mut BNArchitecture,
@@ -48,6 +62,7 @@ pub struct Il {
     /// duration of the lift callback.
     #[allow(clippy::vec_box)]
     labels: RefCell<Vec<Box<BNLowLevelILLabel>>>,
+    cond_handler: RefCell<Option<CondHandler>>,
 }
 
 impl Il {
@@ -55,7 +70,17 @@ impl Il {
     /// `raw` must be a valid LLIL function for the duration of the builder,
     /// and `arch` the architecture it is being lifted for.
     pub unsafe fn from_raw(raw: *mut BNLowLevelILFunction, arch: *mut BNArchitecture) -> Self {
-        Il { raw, arch, labels: RefCell::new(Vec::new()) }
+        Il { raw, arch, labels: RefCell::new(Vec::new()), cond_handler: RefCell::new(None) }
+    }
+
+    /// Install (`Some`) or remove (`None`) the `_xtensa_conditional_handler`.
+    pub fn set_conditional_handler(&self, handler: Option<CondHandler>) {
+        *self.cond_handler.borrow_mut() = handler;
+    }
+
+    /// `getattr(il, '_xtensa_conditional_handler', None)`.
+    pub fn conditional_handler(&self) -> Option<CondHandler> {
+        self.cond_handler.borrow().clone()
     }
 
     pub fn raw(&self) -> *mut BNLowLevelILFunction {
@@ -99,6 +124,24 @@ impl Il {
         unsafe { BNLowLevelILSetCurrentAddress(self.raw, self.arch, addr) }
     }
 
+    /// `il.set_current_address(addr, arch)` with an explicit architecture.
+    pub fn set_current_address_arch(&self, addr: u64, arch: crate::il_read::Arch) {
+        unsafe { BNLowLevelILSetCurrentAddress(self.raw, arch.raw(), addr) }
+    }
+
+    /// `il.expr(op, a, b, c, d, size=size, flags=flags, source_location=loc)`.
+    #[allow(clippy::too_many_arguments)]
+    pub fn expr_at(&self, loc: Loc, op: BNLowLevelILOperation, size: usize, flags: u32, a: u64, b: u64, c: u64, d: u64) -> E {
+        unsafe {
+            BNLowLevelILAddExprWithLocation(self.raw, loc.address, loc.source_operand, op, size, flags, a, b, c, d) as E
+        }
+    }
+
+    /// `il.finalize()`.
+    pub fn finalize(&self) {
+        unsafe { BNFinalizeLowLevelILFunction(self.raw) }
+    }
+
     // ---------------------------------------------------------- labels ---
 
     /// `LowLevelILLabel()`.
@@ -132,6 +175,37 @@ impl Il {
 
     pub fn goto(&self, label: Label) -> E {
         unsafe { BNLowLevelILGoto(self.raw, label.0) as E }
+    }
+
+    /// `il.if_expr(cond, t, f, loc)`.
+    pub fn if_expr_at(&self, cond: E, t: Label, f: Label, loc: Loc) -> E {
+        unsafe { BNLowLevelILIfWithLocation(self.raw, cond, t.0, f.0, loc.address, loc.source_operand) as E }
+    }
+
+    /// `il.goto(label, loc)`.
+    pub fn goto_at(&self, label: Label, loc: Loc) -> E {
+        unsafe { BNLowLevelILGotoWithLocation(self.raw, label.0, loc.address, loc.source_operand) as E }
+    }
+
+    /// `il.get_label_for_source_instruction(i)`: the core-owned label for a
+    /// block start of the function passed to `prepare_to_copy_function`.
+    pub fn label_for_source_instruction(&self, instr: usize) -> Option<Label> {
+        let p = unsafe { BNGetLabelForLowLevelILSourceInstruction(self.raw, instr) };
+        (!p.is_null()).then_some(Label(p))
+    }
+
+    /// `il.add_label_map(labels)`, entries in dict order.
+    pub fn add_label_map(&self, labels: &[(u64, Label)]) -> E {
+        let mut values: Vec<u64> = labels.iter().map(|(v, _)| *v).collect();
+        let mut ptrs: Vec<*mut BNLowLevelILLabel> = labels.iter().map(|(_, l)| l.0).collect();
+        unsafe { BNLowLevelILAddLabelMap(self.raw, values.as_mut_ptr(), ptrs.as_mut_ptr(), labels.len()) as E }
+    }
+
+    /// `il.jump_to(dest, targets)`: the label map is built after `dest`, as
+    /// Python evaluates it as an argument of the final `expr` call.
+    pub fn jump_to(&self, dest: E, targets: &[(u64, Label)]) -> E {
+        let map = self.add_label_map(targets);
+        self.expr(LLIL_JUMP_TO, 0, dest, (targets.len() * 2) as u64, map, 0)
     }
 
     // -------------------------------------------------- leaves & control ---
