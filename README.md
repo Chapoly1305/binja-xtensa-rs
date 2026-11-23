@@ -82,5 +82,3 @@ See `PORTING.md` for the porting rules.
 
 MIT. The instruction semantics are derived from `binja-xtensa` (MIT,
 Copyright 2025 Nicolae Binica, Zack Orndorff); see `LICENSE`.
-
-The GitHub Actions workflow lives in `ci/github-ci.yml` until it can be installed as `.github/workflows/ci.yml`.
